@@ -1,7 +1,12 @@
 import { NavigationLink, Text, Pagination } from "components";
 import ReactPaginate from "react-paginate";
 
-import { StyledRepoCard, PaginateWrapper, Wrapper } from "./RepoCardStyles";
+import {
+  StyledRepoCard,
+  PaginateWrapper,
+  PaginationBarWrapper,
+  Wrapper,
+} from "./RepoCardStyles";
 
 const RepoCards = ({
   currentPage,
@@ -22,7 +27,9 @@ const RepoCards = ({
       {data.map((item) => (
         <StyledRepoCard key={item.id}>
           <NavigationLink href={item.html_url}>{item.name}</NavigationLink>
-          <Text>{item.description ? item.description : "No Description"}</Text>
+          <Text style={{ marginBottom: "24px" }}>
+            {item.description ? item.description : "No Description"}
+          </Text>
         </StyledRepoCard>
       ))}
       {/* <Pagination
@@ -31,19 +38,30 @@ const RepoCards = ({
         totalRepos={totalRepos}
         handlePageChange={handlePageChange}
       /> */}
-      <PaginateWrapper>
-        {`${(currentPage + 1) * reposPerPage - (reposPerPage - 1)} - ${
+      <PaginationBarWrapper>
+        <p>{`${(currentPage + 1) * reposPerPage - (reposPerPage - 1)} - ${
           (currentPage + 1) * reposPerPage
-        } of ${totalRepos} items`}
-        <ReactPaginate
-          previousLabel={"<"}
-          nextLabel={">"}
-          pageCount={totalPages}
-          pageRangeDisplayed={2}
-          marginPagesDisplayed={1}
-          onPageChange={handlePageChange}
-        />
-      </PaginateWrapper>
+        } of ${totalRepos} items`}</p>
+
+        <PaginateWrapper>
+          <ReactPaginate
+            pageCount={totalPages}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={1}
+            activeLinkClassName="active"
+            breakClassName="break-me"
+            containerClassName="pagination"
+            disabledClassName="disabled"
+            disableInitialCallback={true}
+            previousLabel={"<"}
+            nextClassName="btn"
+            nextLabel={">"}
+            previousClassName="btn"
+            pageLinkClassName={"page"}
+            onPageChange={handlePageChange}
+          />
+        </PaginateWrapper>
+      </PaginationBarWrapper>
     </Wrapper>
   );
 };

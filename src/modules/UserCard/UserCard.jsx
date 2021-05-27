@@ -16,7 +16,9 @@ const UserCard = ({ data }) => {
   return (
     <StyledUserCard>
       <RoundImg size="280px" Img={data.user.avatar_url} />
-      <Text type="h2">{data.user.name}</Text>
+      <Text type="h2">
+        {data.user.name != null ? data.user.name : data.user.login}
+      </Text>
       <NavigationLink href={data.user.html_url} type="p">
         {data.user.login}
       </NavigationLink>

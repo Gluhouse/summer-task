@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { colors } from "styles";
 
 export const StyledHeaderSearchBar = styled.div`
+  width: 100%;
   background-color: ${colors.PRIMARY};
   display: flex;
   align-items: center;

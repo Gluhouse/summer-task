@@ -18,6 +18,7 @@ const HeaderSearchBar = ({ data, setData, setLoading }) => {
   const handleBlur = (e) => {
     console.log("blurred");
     handleSubmit(e);
+    console.log(data);
   };
 
   const handleSubmit = (e) => {
