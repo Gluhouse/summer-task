@@ -51,7 +51,7 @@ export const PaginateWrapper = styled.div`
     list-style: none;
     line-height: 21px;
     margin-left: auto;
-    width: 220px;
+    width: 245px;
     display: flex;
     justify-content: space-between;
   }
