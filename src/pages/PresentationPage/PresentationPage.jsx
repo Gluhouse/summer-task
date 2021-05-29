@@ -21,7 +21,6 @@ const PresentationPage = () => {
     currentRepos = data.repos.slice(indexOfFirstRepo, indexOfLastRepo);
     totalRepos = data.repos.length;
     totalPages = Math.ceil(data.repos.length / reposPerPage);
-    console.log(totalPages);
   }
 
   const handlePageChange = ({ selected: selectedPage }) => {

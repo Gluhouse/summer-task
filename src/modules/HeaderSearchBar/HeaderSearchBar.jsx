@@ -16,9 +16,9 @@ const HeaderSearchBar = ({ data, setData, setLoading, error, setError }) => {
     setInputValue(e.target.value);
   };
 
-  const handleBlur = (e) => {
-    handleSubmit(e);
-  };
+  //   const handleBlur = (e) => {
+  //     handleSubmit(e);
+  //   };
 
   const validation = () => {
     if (
@@ -58,7 +58,6 @@ const HeaderSearchBar = ({ data, setData, setLoading, error, setError }) => {
       )
       .catch((err) => {
         setSearchValue(inputValue);
-        console.log(err.response);
         setData({});
         setError(err.response);
         setLoading(false);
@@ -69,9 +68,7 @@ const HeaderSearchBar = ({ data, setData, setLoading, error, setError }) => {
     <StyledHeaderSearchBar>
       <form onSubmit={handleSubmit}>
         <Logo />
-        <InputBar onChange={handleChange} onBlur={handleBlur}>
-          {inputValue}
-        </InputBar>
+        <InputBar onChange={handleChange}>{inputValue}</InputBar>
       </form>
     </StyledHeaderSearchBar>
   );

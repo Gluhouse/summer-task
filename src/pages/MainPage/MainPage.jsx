@@ -21,7 +21,6 @@ const MainPage = () => {
   const [error, setError] = useState({});
 
   const findRepos = ({ windowHeight, inputHeight = 194, cardHeight }) => {
-    console.log(error);
     return window.innerWidth <= 640 || window.innerHeight <= 460
       ? 5
       : Math.floor((windowHeight - inputHeight) / cardHeight);
