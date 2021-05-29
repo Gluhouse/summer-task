@@ -7,8 +7,9 @@ export const StyledHeaderSearchBar = styled.div`
   display: flex;
   align-items: center;
   height: 72px;
-  & svg {
+  & a {
     margin-left: 41px;
+    display: block;
   }
   & div {
     margin-left: 22px;
