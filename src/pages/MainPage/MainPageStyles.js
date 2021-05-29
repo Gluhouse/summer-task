@@ -31,7 +31,7 @@ export const StyledMainPage = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  height: calc(100vh - 72px);
+  height: calc(100% - 72px);
   display: flex;
 
   @media (max-width: 640px), (max-height: 460px) {
