@@ -62,7 +62,7 @@ const MainPage = () => {
     setCurrentPage(selectedPage);
   };
 
-  const renderSwitch = (error) => {
+  const renderError = (error) => {
     return +error.status === 404 ? (
       <NotFound>
         <Union />
@@ -103,7 +103,7 @@ const MainPage = () => {
           ""
         )}
         {error.data ? (
-          renderSwitch(error)
+          renderError(error)
         ) : (
           <>
             {data.user ? <UserCard data={data} /> : ""}
