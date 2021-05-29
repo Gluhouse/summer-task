@@ -6,9 +6,10 @@ import { StyledHeaderSearchBar } from "./HeaderSearchBarStyles";
 import { RoundImg, InputBar } from "components";
 import { Logo, SearchIcon } from "assets";
 
-const HeaderSearchBar = ({ data, setData, setLoading }) => {
+const HeaderSearchBar = ({ data, setData, setLoading, error, setError }) => {
   // html_url | name | description |
   const [inputValue, setInputValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   //   const [data, setData] = useState({});
 
   const handleChange = (e) => {
@@ -16,18 +17,25 @@ const HeaderSearchBar = ({ data, setData, setLoading }) => {
   };
 
   const handleBlur = (e) => {
-    console.log("blurred");
     handleSubmit(e);
-    console.log(data);
+  };
+
+  const validation = () => {
+    if (
+      ("user" in data &&
+        data.user.login.toLowerCase() === inputValue.toLowerCase()) ||
+      (inputValue === searchValue && (error != "" || error != 403)) ||
+      inputValue === ""
+    ) {
+      return false;
+    }
+    return true;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      "user" in data &&
-      data.user.login.toLowerCase() === inputValue.toLowerCase()
-    ) {
+    if (!validation()) {
       return;
     }
 
@@ -36,19 +44,25 @@ const HeaderSearchBar = ({ data, setData, setLoading }) => {
     const requestUser = axios.get(api.url + inputValue.toString());
     const requestRepos = axios.get(api.url + inputValue.toString() + "/repos");
 
-    console.log("submit");
     axios
       .all([requestUser, requestRepos])
       .then(
         axios.spread((...res) => {
           const user = res[0];
           const repos = res[1];
-          console.log(user, repos);
+          setSearchValue("");
           setData({ user: user.data, repos: repos.data });
+          setError({});
           setLoading(false);
         })
       )
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setSearchValue(inputValue);
+        console.log(err.response);
+        setData({});
+        setError(err.response);
+        setLoading(false);
+      });
   };
 
   return (

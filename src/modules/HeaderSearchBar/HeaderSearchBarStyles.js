@@ -11,12 +11,18 @@ export const StyledHeaderSearchBar = styled.div`
     margin-left: 41px;
   }
   & div {
-    margin-left: 41px;
+    margin-left: 22px;
     width: 40%;
   }
   & form {
     width: 100%;
     display: flex;
     align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    & div {
+      width: 60%;
+    }
   }
 `;

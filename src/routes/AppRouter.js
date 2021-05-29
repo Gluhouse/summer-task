@@ -14,7 +14,7 @@ function AppRouter() {
       <Route exact path={pageRoutes.PRESENTATION}>
         <PresentationPage />
       </Route>
-      <Redirect exact from="/" to={pageRoutes.NOT_FOUND} />
+      <Redirect exact from="/" to={pageRoutes.MAIN} />
       <Route>
         <Page404 />
       </Route>

@@ -1,5 +1,6 @@
 import { NavigationLink, Text, Pagination } from "components";
 import ReactPaginate from "react-paginate";
+import ReactResizeDetector from "react-resize-detector";
 
 import {
   StyledRepoCard,
@@ -12,15 +13,10 @@ const RepoCards = ({
   currentPage,
   data,
   handlePageChange,
-  loading,
   totalRepos,
   totalPages,
   reposPerPage,
 }) => {
-  if (loading) {
-    return <div>Loading</div>;
-  }
-
   return (
     <Wrapper>
       <Text type="h1">Repositories ({totalRepos})</Text>
@@ -32,12 +28,7 @@ const RepoCards = ({
           </Text>
         </StyledRepoCard>
       ))}
-      {/* <Pagination
-        currentPage={currentPage}
-        reposPerPage={reposPerPage}
-        totalRepos={totalRepos}
-        handlePageChange={handlePageChange}
-      /> */}
+
       <PaginationBarWrapper>
         <p>{`${(currentPage + 1) * reposPerPage - (reposPerPage - 1)} - ${
           (currentPage + 1) * reposPerPage
