@@ -1,5 +1,5 @@
 export default {
-  MAIN: "/mainpage",
+  MAIN: "/main",
   PRESENTATION: "/presentation",
   NOT_FOUND: "/404",
 };
