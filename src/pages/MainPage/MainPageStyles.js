@@ -31,11 +31,12 @@ export const StyledMainPage = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  min-height: 100vh;
   height: calc(100% - 72px);
   display: flex;
 
   @media (max-width: 640px), (max-height: 460px) {
+    min-height: 100vh;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;
