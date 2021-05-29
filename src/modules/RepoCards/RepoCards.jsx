@@ -30,7 +30,9 @@ const RepoCards = ({
 
       <PaginationBarWrapper>
         <p>{`${(currentPage + 1) * reposPerPage - (reposPerPage - 1)} - ${
-          (currentPage + 1) * reposPerPage
+          (currentPage + 1) * reposPerPage > totalRepos
+            ? totalRepos
+            : (currentPage + 1) * reposPerPage
         } of ${totalRepos} items`}</p>
 
         <PaginateWrapper>
