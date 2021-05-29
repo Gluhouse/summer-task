@@ -6,7 +6,14 @@ import { StyledHeaderSearchBar } from "./HeaderSearchBarStyles";
 import { InputBar } from "components";
 import { Logo } from "assets";
 
-const HeaderSearchBar = ({ data, setData, setLoading, error, setError }) => {
+const HeaderSearchBar = ({
+  data,
+  setData,
+  setLoading,
+  error,
+  setError,
+  setCurrentPage,
+}) => {
   // html_url | name | description |
   const [inputValue, setInputValue] = useState("");
   const [searchValue, setSearchValue] = useState("");
@@ -19,6 +26,15 @@ const HeaderSearchBar = ({ data, setData, setLoading, error, setError }) => {
   //   const handleBlur = (e) => {
   //     handleSubmit(e);
   //   };
+
+  const resetPage = () => {
+    setInputValue("");
+    setLoading(false);
+    setSearchValue("");
+    setData({});
+    setError({});
+    setCurrentPage(0);
+  };
 
   const validation = () => {
     if (
@@ -50,6 +66,7 @@ const HeaderSearchBar = ({ data, setData, setLoading, error, setError }) => {
         axios.spread((...res) => {
           const user = res[0];
           const repos = res[1];
+          setCurrentPage(0);
           setSearchValue("");
           setData({ user: user.data, repos: repos.data });
           setError({});
@@ -67,7 +84,9 @@ const HeaderSearchBar = ({ data, setData, setLoading, error, setError }) => {
   return (
     <StyledHeaderSearchBar>
       <form onSubmit={handleSubmit}>
-        <Logo />
+        <a href={"./main"} onClick={resetPage}>
+          <Logo />
+        </a>
         <InputBar onChange={handleChange}>{inputValue}</InputBar>
       </form>
     </StyledHeaderSearchBar>

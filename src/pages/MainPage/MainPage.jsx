@@ -90,6 +90,7 @@ const MainPage = () => {
         setLoading={setLoading}
         error={error}
         setError={setError}
+        setCurrentPage={setCurrentPage}
       ></HeaderSearchBar>
       <Wrapper>
         {loading ? (

@@ -49,6 +49,7 @@ const RepoCards = ({
             previousClassName="btn"
             pageLinkClassName={"page"}
             onPageChange={handlePageChange}
+            forcePage={currentPage}
           />
         </PaginateWrapper>
       </PaginationBarWrapper>

@@ -64,6 +64,7 @@ export const PaginateWrapper = styled.div`
 
   .break-me {
     cursor: default;
+    margin-left: 10px;
   }
 
   .active {
