@@ -31,11 +31,14 @@ export const StyledMainPage = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  min-height: 100vh;
   height: calc(100% - 72px);
   display: flex;
 
   @media (max-width: 640px), (max-height: 460px) {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -46,6 +49,10 @@ export const LoadingWrapper = styled.div`
   z-index: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background-color: rgba(128, 128, 128, 0.4);
 `;
 
@@ -56,7 +63,6 @@ export const Loading = styled.div`
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 245px;
   border-top: 10px solid ${colors.PRIMARY};
   border-radius: 50%;
   width: 200px;
@@ -70,14 +76,6 @@ export const Loading = styled.div`
     100% {
       transform: rotate(360deg);
     }
-  }
-
-  @media (max-height: 640px) {
-    margin-top: 200px;
-  }
-
-  @media (max-height: 440px) {
-    margin-top: 120px;
   }
 `;
 

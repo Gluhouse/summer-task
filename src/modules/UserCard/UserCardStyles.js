@@ -33,6 +33,11 @@ export const StyledUserCard = styled.div`
     }
   }
 
+  @media (max-height: 460px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   @media (max-height: 420px) {
     margin-top: 38px;
 
