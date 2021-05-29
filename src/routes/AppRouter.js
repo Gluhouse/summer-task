@@ -1,7 +1,7 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import { MainPage, PresentationPage } from "pages";
 
-import pageRoutes from "constants/pageRoutes";
+import { pageRoutes } from "constants/pageRoutes";
 import {} from "pages";
 
 function AppRouter() {

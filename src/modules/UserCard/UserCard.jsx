@@ -1,7 +1,8 @@
 import { StyledUserCard, Wrapper } from "./UserCardStyles";
 
-import { RoundImg, Text, NavigationLink } from "components";
+import { Avatar, Text, NavigationLink } from "components";
 import { FollowersIcon, PersonIcon } from "assets";
+
 const UserCard = ({ data }) => {
   const checkNumber = (num) => {
     if (+num / 1000 >= 1) {
@@ -13,9 +14,13 @@ const UserCard = ({ data }) => {
     return num;
   };
 
+  const followers = checkNumber(data.user.followers);
+
+  const following = checkNumber(data.user.following);
+
   return (
     <StyledUserCard>
-      <RoundImg size="280px" Img={data.user.avatar_url} />
+      <Avatar size="280px" Img={data.user.avatar_url} />
       <Text type="h2">
         {data.user.name != null ? data.user.name : data.user.login}
       </Text>
@@ -25,10 +30,10 @@ const UserCard = ({ data }) => {
       <Wrapper>
         <div style={{ marginRight: "20px" }}>
           <FollowersIcon style={{ marginRight: "9px" }} />
-          {checkNumber(data.user.followers)} followers
+          {followers} followers
         </div>
         <div>
-          <PersonIcon /> {checkNumber(data.user.following)} following
+          <PersonIcon /> {following} following
         </div>
       </Wrapper>
     </StyledUserCard>

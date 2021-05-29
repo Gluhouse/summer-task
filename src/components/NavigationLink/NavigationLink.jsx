@@ -11,7 +11,6 @@ const NavigationLink = ({
   return externalLink ? (
     <ExternalLink
       // eslint-disable-next-line no-script-url
-
       href={href || "javascript:void(0)"}
       onClick={onClick}
       role="link"

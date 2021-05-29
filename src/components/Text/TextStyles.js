@@ -8,6 +8,7 @@ export const StyledText = styled.p`
         return typography.FONT_SIZE_32;
       case "h2":
         return typography.FONT_SIZE_26;
+      // case "p"
       default:
         return typography.FONT_SIZE_16;
     }
@@ -18,6 +19,7 @@ export const StyledText = styled.p`
         return typography.FONT_WEIGHT_BOLD;
       case "h2":
         return typography.FONT_WEIGHT_SEMI_BOLD;
+      // case "p"
       default:
         return typography.FONT_WEIGHT_NORMAL;
     }

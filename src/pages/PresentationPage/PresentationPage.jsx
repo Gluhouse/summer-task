@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { StyledPresentationPage } from "./PresentationPageStyles";
-import { RoundImg, InputBar, Text, NavigationLink } from "components";
+import { Avatar, InputBar, Text, NavigationLink } from "components";
 import { Logo, SearchIcon } from "assets";
 import { HeaderSearchBar, UserCard, RepoCards } from "modules";
 
@@ -33,13 +33,9 @@ const PresentationPage = () => {
       <br />
       <h1>Components</h1>
       <br />
-      <h1>RoundImg (size/ Img/ fill)</h1>
+      <h1>Avatar (size/ Img/ fill)</h1>
       <br />
-      {"user" in data ? (
-        <RoundImg size="280px" Img={data.user.avatar_url} />
-      ) : (
-        ""
-      )}
+      {"user" in data ? <Avatar size="280px" Img={data.user.avatar_url} /> : ""}
       <Logo style={{ fill: "blue" }}></Logo>
       <br />
       <h1>InputBar(Img/ children)</h1>
@@ -58,7 +54,7 @@ const PresentationPage = () => {
       <br />
       <h1>HeaderSearchBar</h1> */}
       {/* <TempWrapper>
-        <RoundImg size="40px" Img={Logo} fill={true} />
+        <Avatar size="40px" Img={Logo} fill={true} />
 
         <InputBar Img={SearchIcon}>{123}</InputBar>
       </TempWrapper> */}

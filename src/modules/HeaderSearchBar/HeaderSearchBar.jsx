@@ -14,18 +14,12 @@ const HeaderSearchBar = ({
   setError,
   setCurrentPage,
 }) => {
-  // html_url | name | description |
   const [inputValue, setInputValue] = useState("");
   const [searchValue, setSearchValue] = useState("");
-  //   const [data, setData] = useState({});
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
-
-  //   const handleBlur = (e) => {
-  //     handleSubmit(e);
-  //   };
 
   const resetPage = () => {
     setInputValue("");
@@ -37,12 +31,16 @@ const HeaderSearchBar = ({
   };
 
   const validation = () => {
-    if (
-      ("user" in data &&
-        data.user.login.toLowerCase() === inputValue.toLowerCase()) ||
-      (inputValue === searchValue && (error !== "" || error !== 403)) ||
-      inputValue === ""
-    ) {
+    let userInData =
+      "user" in data &&
+      data.user.login.toLowerCase() === inputValue.toLowerCase();
+
+    let cannotSearchUser =
+      inputValue === searchValue && (error !== "" || error !== 403);
+
+    let emptyInput = inputValue === "";
+
+    if (userInData || cannotSearchUser || emptyInput) {
       return false;
     }
     return true;
@@ -51,7 +49,9 @@ const HeaderSearchBar = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!validation()) {
+    let validationPassed = validation();
+
+    if (!validationPassed) {
       return;
     }
 

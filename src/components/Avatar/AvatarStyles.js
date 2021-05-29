@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "styles";
 
-export const StyledRoundImg = styled.div`
+export const StyledAvatar = styled.div`
   background-image: url(${({ Img }) => Img});
   background-size: 100%;
   border-radius: 50%;

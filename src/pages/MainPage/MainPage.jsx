@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import {
   StyledMainPage,
   Wrapper,
@@ -37,12 +37,12 @@ const MainPage = () => {
     cardHeight,
   });
 
-  const onResize = useCallback(() => {
+  const onResize = () => {
     reposPerPage = findRepos({
       windowHeight: window.innerHeight,
       cardHeight,
     });
-  }, []);
+  };
 
   const { ref } = useResizeDetector({ onResize });
 
@@ -50,7 +50,7 @@ const MainPage = () => {
   let totalRepos = 0;
   let totalPages = 0;
 
-  if ("repos" in data) {
+  if (data.repos) {
     const indexOfLastRepo = (currentPage + 1) * reposPerPage;
     const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
     currentRepos = data.repos.slice(indexOfFirstRepo, indexOfLastRepo);
@@ -63,23 +63,17 @@ const MainPage = () => {
   };
 
   const renderSwitch = (error) => {
-    switch (+error.status) {
-      case 404:
-        return (
-          <NotFound>
-            <Union />
-            <p>User not found</p>
-          </NotFound>
-        );
-
-      default:
-        return (
-          <Error>
-            <StopSign />
-            <p>{error.data.message}</p>
-          </Error>
-        );
-    }
+    return +error.status === 404 ? (
+      <NotFound>
+        <Union />
+        <p>User not found</p>
+      </NotFound>
+    ) : (
+      <Error>
+        <StopSign />
+        <p>{error.data.message}</p>
+      </Error>
+    );
   };
 
   return (
@@ -100,7 +94,7 @@ const MainPage = () => {
         ) : (
           ""
         )}
-        {!("data" in error) && !("user" in data) ? (
+        {!error.data && !data.user ? (
           <InitialState>
             <SearchIcon />
             <p>Start with searching a GitHub user</p>
@@ -108,12 +102,12 @@ const MainPage = () => {
         ) : (
           ""
         )}
-        {"data" in error ? (
+        {error.data ? (
           renderSwitch(error)
         ) : (
           <>
-            {"user" in data ? <UserCard data={data} /> : ""}
-            {"repos" in data ? (
+            {data.user ? <UserCard data={data} /> : ""}
+            {data.repos && data.repos.length > 0 ? (
               <RepoCards
                 currentPage={currentPage}
                 data={currentRepos}
@@ -123,7 +117,7 @@ const MainPage = () => {
                 reposPerPage={reposPerPage}
                 handlePageChange={handlePageChange}
               ></RepoCards>
-            ) : "user" in data ? (
+            ) : data.user ? (
               <NoRepos>
                 <NoReposIcon />
                 <p>Repository list is empty</p>

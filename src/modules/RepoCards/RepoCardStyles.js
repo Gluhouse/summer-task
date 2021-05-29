@@ -38,7 +38,7 @@ export const StyledRepoCard = styled.div`
     }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 640px), (max-height: 460px) {
     width: 97%;
   }
 `;
@@ -51,6 +51,9 @@ export const PaginateWrapper = styled.div`
     list-style: none;
     line-height: 21px;
     margin-left: auto;
+    width: 220px;
+    display: flex;
+    justify-content: space-between;
   }
 
   .disabled {
@@ -110,7 +113,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media (max-width: 640px), (max-height: 540px) {
+  @media (max-width: 640px), (max-height: 460px) {
     width: 100%;
     align-items: center;
   }
@@ -135,8 +138,9 @@ export const PaginationBarWrapper = styled.div`
     margin-right: 0;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 640px), (max-height: 460px) {
     flex-direction: column;
+    margin-right: 0;
     & p {
       margin-right: 0;
       margin-top: 10px;
