@@ -3,8 +3,8 @@ import axios from "axios";
 import api from "constants/api.json";
 
 import { StyledHeaderSearchBar } from "./HeaderSearchBarStyles";
-import { RoundImg, InputBar } from "components";
-import { Logo, SearchIcon } from "assets";
+import { InputBar } from "components";
+import { Logo } from "assets";
 
 const HeaderSearchBar = ({ data, setData, setLoading, error, setError }) => {
   // html_url | name | description |
@@ -24,7 +24,7 @@ const HeaderSearchBar = ({ data, setData, setLoading, error, setError }) => {
     if (
       ("user" in data &&
         data.user.login.toLowerCase() === inputValue.toLowerCase()) ||
-      (inputValue === searchValue && (error != "" || error != 403)) ||
+      (inputValue === searchValue && (error !== "" || error !== 403)) ||
       inputValue === ""
     ) {
       return false;

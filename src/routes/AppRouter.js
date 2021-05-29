@@ -1,6 +1,5 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import { MainPage, PresentationPage, Page404 } from "pages";
-import { HeaderSearchBar } from "modules";
 
 import pageRoutes from "constants/pageRoutes";
 import {} from "pages";
@@ -16,7 +15,7 @@ function AppRouter() {
       </Route>
       <Redirect exact from="/" to={pageRoutes.MAIN} />
       <Route>
-        <Page404 />
+        <MainPage />
       </Route>
     </Switch>
   );

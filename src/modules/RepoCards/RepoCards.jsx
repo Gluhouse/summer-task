@@ -1,6 +1,5 @@
-import { NavigationLink, Text, Pagination } from "components";
+import { NavigationLink, Text } from "components";
 import ReactPaginate from "react-paginate";
-import ReactResizeDetector from "react-resize-detector";
 
 import {
   StyledRepoCard,

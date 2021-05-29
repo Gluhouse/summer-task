@@ -45,7 +45,7 @@ const MainPage = () => {
     });
   }, []);
 
-  const { ref, width, height } = useResizeDetector({ onResize });
+  const { ref } = useResizeDetector({ onResize });
 
   let currentRepos = [];
   let totalRepos = 0;

@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-import { StyledPresentationPage, TempWrapper } from "./PresentationPageStyles";
+import { StyledPresentationPage } from "./PresentationPageStyles";
 import { RoundImg, InputBar, Text, NavigationLink } from "components";
-import { Logo, Avatar, SearchIcon } from "assets";
+import { Logo, SearchIcon } from "assets";
 import { HeaderSearchBar, UserCard, RepoCards } from "modules";
-import { typography } from "styles";
 
 const PresentationPage = () => {
   const [data, setData] = useState({});
