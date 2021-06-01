@@ -87,12 +87,10 @@ const MainPage = () => {
         setCurrentPage={setCurrentPage}
       ></HeaderSearchBar>
       <Wrapper>
-        {loading ? (
+        {loading && (
           <LoadingWrapper>
             <Loading />
           </LoadingWrapper>
-        ) : (
-          ""
         )}
         {!error.data && !data.user ? (
           <InitialState>
@@ -106,7 +104,7 @@ const MainPage = () => {
           renderError(error)
         ) : (
           <>
-            {data.user ? <UserCard data={data} /> : ""}
+            {data.user && <UserCard data={data} />}
             {data.repos && data.repos.length > 0 ? (
               <RepoCards
                 currentPage={currentPage}

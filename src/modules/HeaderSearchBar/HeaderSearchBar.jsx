@@ -83,7 +83,7 @@ const HeaderSearchBar = ({
 
   return (
     <StyledHeaderSearchBar>
-      <form onSubmit={handleSubmit}>
+      <form onBlur={handleSubmit} onSubmit={handleSubmit}>
         <a href={"./main"} onClick={resetPage}>
           <Logo />
         </a>
